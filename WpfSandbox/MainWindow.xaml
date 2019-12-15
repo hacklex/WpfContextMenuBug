@@ -7,6 +7,28 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <ListBox ItemsSource="{x:Static local:DesignData.Strings}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu>
+                                <MenuItem Header="Scary Action" Click="OnScaryClick"></MenuItem>
+                                <MenuItem Header="Strange Action" Click="OnStrangeClick"></MenuItem>
+                                <MenuItem Header="Fancy Action" Click="OnFancyClick"></MenuItem>
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Border Background="Green" BorderBrush="Black" BorderThickness="1" Width="12" Height="12" VerticalAlignment="Center"></Border>
+                        <TextBlock Text="{Binding}" Margin="2" VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

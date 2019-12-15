@@ -24,5 +24,20 @@ namespace WpfSandbox
         {
             InitializeComponent();
         }
+
+        private void OnScaryClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(this, "Scary!");
+        }
+
+        private void OnStrangeClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(this, "Strange!");
+        }
+
+        private void OnFancyClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(this, "Fancy!");
+        }
     }
 }
