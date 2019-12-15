@@ -7,20 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <ListBox ItemsSource="{x:Static local:DesignData.Strings}">
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="ContextMenu">
-                        <Setter.Value>
-                            <ContextMenu>
-                                <MenuItem Header="Scary Action" Click="OnScaryClick"></MenuItem>
-                                <MenuItem Header="Strange Action" Click="OnStrangeClick"></MenuItem>
-                                <MenuItem Header="Fancy Action" Click="OnFancyClick"></MenuItem>
-                            </ContextMenu>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListBox.ItemContainerStyle>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition> 
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions> 
+            <ListBox ItemsSource="{x:Static local:DesignData.Strings}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="ContextMenu">
+                            <Setter.Value>
+                                <ContextMenu>
+                                    <MenuItem Header="Scary Action" Click="OnScaryClick"></MenuItem>
+                                    <MenuItem Header="Strange Action" Click="OnStrangeClick"></MenuItem>
+                                    <MenuItem Header="Fancy Action" Click="OnFancyClick"></MenuItem>
+                                </ContextMenu>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -29,6 +33,11 @@
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-        </ListBox>
+        </ListBox> 
+        <!-- This is the only thing you can have here without getting an InvalidCastException,
+             barring derived classes -->
+         <MenuItem Grid.Row="1" Header="THIS IS SERIOUSLY BROKEN..."></MenuItem>
+        <!-- Uncomment this INSTEAD OF MenuItem and run, to see a beautiful InvalidCastException...
+            <TextBlock Grid.Row="1" Text="This explodes the app into pieces..."></TextBlock>  -->
     </Grid>
 </Window>
